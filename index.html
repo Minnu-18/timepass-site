@@ -1,10 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Minnu ka Timepass</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Minnu | Extreme Timepass Zone</title>
+
+<meta name="description" content="Extreme timepass website made by Minnu. Pure bakchodi, animations and fun.">
+<meta name="robots" content="index, follow">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+  background: black;
+  color: #00ffcc;
+  overflow-x: hidden;
+}
+
+/* Glitch text */
+.glitch{
+  font-size: 2.5rem;
+  text-align:center;
+  margin-top:60px;
+  position: relative;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% {text-shadow:2px 2px red;}
+  25% {text-shadow:-2px -2px blue;}
+  50% {text-shadow:2px -2px lime;}
+  75% {text-shadow:-2px 2px magenta;}
+  100% {text-shadow:2px 2px red;}
+}
+
+.container{
+  text-align:center;
+  padding:40px 20px;
+}
+
+button{
+  margin-top:20px;
+  padding:15px 30px;
+  border:none;
+  border-radius:30px;
+  background:#00ffcc;
+  color:black;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform: scale(1.1);
+  background:white;
+}
+
+/* Matrix rain */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+footer{
+  margin-top:80px;
+  text-align:center;
+  font-size:12px;
+  opacity:0.6;
+}
+</style>
 </head>
+
 <body>
-    <h1>Welcome to Minnu’s Timepass Zone 🤡</h1>
-    <p>This is a fresh start website.</p>
+
+<canvas id="matrix"></canvas>
+
+<h1 class="glitch">WELCOME TO MINNU’S ZONE 💀</h1>
+
+<div class="container">
+  <p>This website exists because boredom is powerful.</p>
+  <p>Viewer discretion advised ⚠️</p>
+
+  <button onclick="boom()">Click at your own risk</button>
+</div>
+
+<footer>
+  © 2025 | Made by Minnu | Extreme Timepass
+</footer>
+
+<script>
+function boom(){
+  alert("Minnu ne kaha tha mat dabana 😭🔥");
+}
+
+// Matrix effect
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01MINNUXD#$%&";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for(let i=0;i<columns;i++) drops[i]=1;
+
+function draw(){
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = "#00ffcc";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i=0;i<drops.length;i++){
+    const text = letters.charAt(Math.floor(Math.random()*letters.length));
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+    if(drops[i]*fontSize > canvas.height && Math.random()>0.975)
+      drops[i]=0;
+
+    drops[i]++;
+  }
+}
+
+setInterval(draw,33);
+</script>
+
 </body>
 </html>
