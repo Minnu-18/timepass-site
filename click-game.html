@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minnu | Timepass Game</title>
+
+<style>
+body{
+  background:black;
+  color:#00ffcc;
+  font-family:Arial;
+  text-align:center;
+  padding-top:80px;
+}
+
+button{
+  padding:20px 40px;
+  font-size:20px;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  background:#00ffcc;
+  color:black;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+#score{
+  font-size:40px;
+  margin:30px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎮 Click Madness</h1>
+<p>Kitni baar click kar sakta hai? 😈</p>
+
+<div id="score">0</div>
+
+<button onclick="add()">CLICK ME</button>
+
+<script>
+let score = 0;
+
+function add(){
+  score++;
+  document.getElementById("score").innerText = score;
+
+  if(score === 10){
+    alert("🔥 Bhai ruk ja, haath jal jaega");
+  }
+  if(score === 25){
+    alert("😎 Minnu OP gamer nikla");
+  }
+}
+</script>
+
+</body>
+</html>
